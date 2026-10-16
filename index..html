@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Easy Start · Canvas & Cite Them Right</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef6ff;--ink:#14213d;--soft:#4b5b7a;--card:#fff;--line:#d6e4fb;--blue:#2f6bff;--yellow:#ffc93c;--mint:#1fb67f;--pink:#ff6b8b;--chip:#14213d;--chipt:#ffe08a;--tip:#fff4cf;--tipt:#5b4300;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1626;--ink:#f2f6ff;--soft:#a8b6d4;--card:#18233a;--line:#2a3a5c;--blue:#6b95ff;--mint:#37d69d;--chip:#050a14;--chipt:#ffe08a;--tip:#3a3115;--tipt:#ffe9a6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1626;--ink:#f2f6ff;--soft:#a8b6d4;--card:#18233a;--line:#2a3a5c;--blue:#6b95ff;--mint:#37d69d;--chip:#050a14;--chipt:#ffe08a;--tip:#3a3115;--tipt:#ffe9a6;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg) radial-gradient(circle at 12% 8%,rgba(255,201,60,.35) 0 90px,transparent 91px) no-repeat,radial-gradient(circle at 92% 30%,rgba(255,107,139,.25) 0 70px,transparent 71px) no-repeat;color:var(--ink);font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,Arial,sans-serif;font-size:20px;line-height:1.55}
+main{max-width:720px;margin:0 auto;padding:16px 16px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lang{display:flex;background:var(--card);border:3px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{font:inherit;font-weight:800;border:0;background:none;color:var(--ink);padding:4px 18px;cursor:pointer;min-height:44px}
+.lang button[aria-pressed=true]{background:var(--yellow);color:#14213d}
+h1{font-size:clamp(30px,8vw,46px);line-height:1.15;margin:18px 0 6px;font-weight:800}
+.sub{color:var(--soft);margin:0 0 18px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.tabs button{font:inherit;font-weight:800;font-size:22px;padding:14px 8px;border-radius:20px;border:3px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;min-height:64px}
+.tabs button[aria-selected=true]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.bar{height:18px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 4px}
+.bar i{display:block;height:100%;width:0;background:var(--mint);border-radius:99px;transition:width .35s}
+.count{color:var(--soft);font-size:17px;margin:0 0 14px}
+.step{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:18px;margin:14px 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:start}
+.step.done{border-color:var(--mint)}
+.num{width:56px;height:56px;border-radius:50%;background:var(--yellow);color:#14213d;font-weight:800;font-size:30px;display:grid;place-items:center}
+.step.done .num{background:var(--mint);color:#fff}
+.step h2{margin:0;font-size:26px;line-height:1.2}
+.ico{font-size:34px;margin-inline-end:6px}
+.step p{margin:6px 0 0}
+.chip{display:inline-block;direction:ltr;unicode-bidi:isolate;background:var(--chip);color:var(--chipt);font-family:ui-monospace,Consolas,monospace;font-size:18px;padding:6px 14px;border-radius:14px;margin:8px 0 0;word-break:break-all;user-select:all}
+.tip{background:var(--tip);color:var(--tipt);border-radius:18px;padding:10px 14px;margin-top:10px;font-size:18px}
+.body{grid-column:2}
+.step{border-width:4px}.step:not(.done){border-color:var(--c)}.step .num{background:var(--c);color:#fff}.step.done .num{background:var(--mint)}
+.art svg{width:100%;height:auto;display:block;margin-top:14px;border-radius:22px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.lnk{background:var(--c);color:#fff;font-weight:800;text-decoration:none;padding:10px 20px;border-radius:99px;min-height:48px;display:inline-flex;align-items:center;gap:8px;font-size:19px;border-bottom:5px solid rgba(0,0,0,.28)}
+.lnk:focus-visible{outline:4px solid var(--pink);outline-offset:3px}
+.hero{display:flex;gap:10px;font-size:34px;margin:0 0 8px}.hero span{width:58px;height:58px;display:grid;place-items:center;border-radius:20px;background:var(--card);border:3px solid var(--line)}
+.hero span:nth-child(odd){transform:rotate(-6deg)}.hero span:nth-child(even){transform:rotate(5deg)}
+.done-btn{grid-column:1/-1;margin-top:10px;font:inherit;font-weight:800;font-size:22px;border:3px solid var(--mint);background:none;color:var(--mint);border-radius:18px;min-height:56px;cursor:pointer}
+.step.done .done-btn{background:var(--mint);color:#fff}
+.party{display:none;text-align:center;font-size:30px;font-weight:800;padding:20px;margin:14px 0;background:var(--mint);color:#fff;border-radius:28px}
+.party.on{display:block}
+footer{color:var(--soft);font-size:17px;margin-top:30px;border-top:3px dashed var(--line);padding-top:16px}
+button:focus-visible{outline:4px solid var(--pink);outline-offset:3px}
+@media(max-width:420px){body{font-size:19px}.step{grid-template-columns:1fr}.body{grid-column:1}.num{width:50px;height:50px}}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main>
+ <div class="top">
+  <span style="font-size:40px" aria-hidden="true">🎒</span>
+  <div class="lang" role="group" aria-label="Language">
+   <button id="en" aria-pressed="true">English</button>
+   <button id="ar" aria-pressed="false">عربي</button>
+  </div>
+ </div>
+ <h1 id="title"></h1>
+ <div class="hero" aria-hidden="true"><span>🎨</span><span>📚</span><span>🎓</span><span>⭐</span><span>🚀</span></div>
+ <p class="sub" id="sub"></p>
+ <div class="tabs" role="tablist">
+  <button role="tab" id="tab-canvas" aria-selected="true"></button>
+  <button role="tab" id="tab-ctr" aria-selected="false"></button>
+ </div>
+ <div class="bar"><i id="fill"></i></div>
+ <p class="count" id="count"></p>
+ <div id="steps"></div>
+ <div class="party" id="party"></div>
+ <footer id="foot"></footer>
+</main>
+<script>
+var T={
+en:{title:"Get started, one tiny step at a time",sub:"Tap a button when you finish a step. You can do it!",canvas:"🎨 Canvas",ctr:"📚 Cite Them Right",of:"steps done",done:"Done ✓",undo:"Done ✓ (tap to undo)",party:"🎉 Amazing! You did it!",
+foot:"Made from the QMU screen recording and QMU / library guides. Never tell anyone your password. Stuck? Email helpdesk@qmu.ac.uk",
+lg:"This is an example. Use YOUR number.",},
+ar:{title:"ابدأ خطوة صغيرة صغيرة",sub:"دوس على الزرار لما تخلّص كل خطوة. إنتِ/إنت تقدر!",canvas:"🎨 كانفاس",ctr:"📚 Cite Them Right",of:"خطوات خلصت",done:"خلّصت ✓",undo:"خلّصت ✓ (دوس للتراجع)",party:"🎉 برافو! خلّصت!",
+foot:"الموقع متعمل من فيديو تسجيل الشاشة وإرشادات الجامعة والمكتبة. متقولش الباسورد لحد أبداً. لو علقت ابعت إيميل: helpdesk@qmu.ac.uk",
+lg:"ده مثال. استخدم رقمك إنت.",}
+};
+var G={
+canvas:[
+{i:"📧",t:["Open your email","افتح الإيميل بتاعك"],d:["Find the email from “registry”. It has your student number.","دوّر على الإيميل اللي جاي من registry. فيه رقم الطالب بتاعك."]},
+{i:"🔗",t:["Open the password page","افتح صفحة الباسورد"],d:["Tap the blue link “Password Retrieval page” inside the email.","دوس على اللينك الأزرق Password Retrieval page اللي جوه الإيميل."],c:"u.qmu.ac.uk"},
+{i:"✍️",t:["Fill the 4 boxes","املا الـ 4 خانات"],d:["Copy from the email: Student Number, Surname, Forename, Date of Birth (DD/MM/YYYY). Then tap “Generate Password”.","انسخ من الإيميل: رقم الطالب، الاسم الأخير، الاسم الأول، تاريخ الميلاد (يوم/شهر/سنة). وبعدين دوس Generate Password."],tip:["Red message “You have already completed online matriculation”? Good news, you are already registered. Go to the next step.","ظهرت رسالة حمرا “already completed online matriculation”؟ ده معناه إنك مسجّل خلاص. كمّل على الخطوة اللي بعدها."]},
+{i:"🆔",t:["Your username","اسم المستخدم بتاعك"],d:["Username = your student number + @qmu.ac.uk. Password = the one from matriculation.","اسم المستخدم = رقم الطالب + @qmu.ac.uk . الباسورد = اللي عملته وقت التسجيل (matriculation)."],c:"26012345@qmu.ac.uk",tip:["This is an example. Use YOUR number.","ده مثال. استخدم رقمك إنت."]},
+{i:"📱",t:["Get the Authenticator app","نزّل تطبيق Authenticator"],d:["Install “Microsoft Authenticator” on your phone. When the screen shows a number (like 67), open the app and tap the same number.","نزّل Microsoft Authenticator على موبايلك. لما الشاشة تظهر رقم (زي 67)، افتح التطبيق وادوس على نفس الرقم."],tip:["Do this in the first 2 weeks.","اعمل ده في أول أسبوعين."]},
+{i:"🔒",t:["Make a new password","اعمل باسورد جديد"],d:["Go here, sign in, tap “Change password”. Type the new one two times, then tap Submit.","ادخل هنا، سجّل دخول، ودوس Change password. اكتب الجديد مرتين وبعدين Submit."],c:"mysignins.microsoft.com",tip:["At least 10 characters, with 3 of these 4: BIG letter, small letter, number, symbol.","10 حروف على الأقل، ومعاهم 3 من الـ 4 دول: حرف كبير، حرف صغير، رقم، رمز."]},
+{i:"🎓",t:["Open Canvas!","افتح كانفاس!"],d:["Type your full QMU email and new password. Approve the number in the Authenticator app.","اكتب إيميل الجامعة كامل والباسورد الجديد. وافق على الرقم في تطبيق Authenticator."],c:"canvas.qmu.ac.uk",tip:["Bonus: get the “Canvas Student” app.","هدية: نزّل تطبيق Canvas Student."]}
+],
+ctr:[
+{i:"🌐",t:["Open the website","افتح الموقع"],d:["Type this in your browser.","اكتب ده في المتصفح."],c:"citethemrightonline.com"},
+{i:"👆",t:["Tap “Log In”","دوس Log In"],d:["It is at the top right corner.","هتلاقيه فوق في الركن اليمين."]},
+{i:"🏫",t:["Login via your institution","Login via your institution"],d:["Tap only this button. The other ones will not work.","دوس على الزرار ده بس. الباقي مش هيشتغل."],tip:["Do not use the library card or username boxes.","متستخدمش خانات library card أو username."]},
+{i:"🔎",t:["Find your university","دوّر على جامعتك"],d:["Type the name and pick it from the list.","اكتب اسم الجامعة واختارها من القايمة."],c:"Queen Margaret University"},
+{i:"🔑",t:["Sign in","سجّل دخول"],d:["Use your QMU email and password. Approve the number in the Authenticator app.","استخدم إيميل الجامعة والباسورد. وافق على الرقم في تطبيق Authenticator."]},
+{i:"⭐",t:["Make a free personal account","اعمل حساب شخصي مجاني"],d:["Optional, but it saves your progress. Tap “Sign in to your personal account”, then “Sign up now”. Use your QMU email, then tap the link they email you.","اختياري، بس بيحفظ تقدّمك. دوس Sign in to your personal account وبعدين Sign up now. استخدم إيميل الجامعة وبعدين دوس على اللينك اللي هيوصلك في الإيميل."],tip:["No email? Look in Spam. Use a different password from your university one.","مجاش إيميل؟ بص في Spam. استخدم باسورد مختلف عن باسورد الجامعة."]},
+{i:"🎉",t:["Pick your style","اختار الستايل"],d:["Tap “Choose Referencing Style” (Harvard, APA…). Ask your teacher which one.","دوس Choose Referencing Style (Harvard, APA…). اسأل المدرّس أنهي واحد."]}
+]};
+var PAL=["#2f6bff","#e0407a","#139a69","#7a45e0","#d9570b","#0a8fb5","#c2308f"];
+function base(x){return '<svg viewBox="0 0 320 160" role="img" aria-label="Picture of this step"><rect width="320" height="160" rx="22" fill="var(--c)" opacity=".16"/><circle cx="24" cy="26" r="6" fill="var(--c)"/><circle cx="298" cy="140" r="9" fill="var(--c)" opacity=".5"/><path d="M298 14l3 7 7 1-5 5 1 8-6-4-6 4 1-8-5-5 7-1z" fill="#ffc93c"/>'+x+'</svg>'}
+function frame(x,u){return base('<rect x="36" y="16" width="248" height="130" rx="14" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/><rect x="36" y="16" width="248" height="26" rx="14" fill="var(--c)"/><rect x="36" y="30" width="248" height="12" fill="var(--c)"/><circle cx="52" cy="29" r="4" fill="#fff"/><circle cx="64" cy="29" r="4" fill="#fff" opacity=".7"/><rect x="80" y="22" width="192" height="14" rx="7" fill="#fff"/><text x="88" y="33" font-size="10" fill="#14213d" font-family="monospace">'+(u||'')+'</text>'+x)}
+function ring(x,y,w,h){return '<rect x="'+(x-5)+'" y="'+(y-5)+'" width="'+(w+10)+'" height="'+(h+10)+'" rx="12" fill="none" stroke="#ff6b8b" stroke-width="4" stroke-dasharray="7 5"/><text x="'+(x+w-12)+'" y="'+(y+h/2+12)+'" font-size="26">👆</text>'}
+function bt(x,y,w,h,t,f){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="9" fill="'+(f||'var(--c)')+'"/><text x="'+(x+w/2)+'" y="'+(y+h/2+4)+'" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">'+t+'</text>'}
+function bars(){return '<rect x="56" y="52" width="120" height="10" rx="5" fill="var(--ink)"/><rect x="56" y="70" width="170" height="6" rx="3" fill="var(--soft)"/><rect x="56" y="82" width="140" height="6" rx="3" fill="var(--soft)"/>'}
+var SCN={
+mail:function(){var r='';[50,78,106].forEach(function(y,i){r+='<rect x="50" y="'+y+'" width="220" height="22" rx="8" fill="'+(i==1?'#ffe08a':'var(--line)')+'"/><circle cx="64" cy="'+(y+11)+'" r="7" fill="var(--c)"/>'+(i==1?'<text x="78" y="'+(y+15)+'" font-size="12" font-weight="bold" fill="#14213d">registry ✉️</text>':'<rect x="78" y="'+(y+8)+'" width="80" height="6" rx="3" fill="var(--soft)"/>')});return frame(r+ring(50,78,220,22),'mail.google.com')},
+site:function(u,b,p){var s=bars();if(p==1)s+=bt(110,98,110,28,b)+ring(110,98,110,28);else if(p==2)s+=bt(206,48,66,22,b)+ring(206,48,66,22);else s+='<text x="146" y="132" font-size="34">🌐</text>';return frame(s,u)},
+form:function(){var s='';[48,64,80,96].forEach(function(y){s+='<rect x="54" y="'+(y+3)+'" width="36" height="6" rx="3" fill="var(--soft)"/><rect x="100" y="'+y+'" width="160" height="12" rx="4" fill="var(--line)"/><rect x="104" y="'+(y+4)+'" width="60" height="4" rx="2" fill="var(--ink)"/>'});return frame(s+bt(100,116,110,24,'Generate Password')+ring(100,116,110,24),'u.qmu.ac.uk')},
+id:function(t){return frame('<rect x="62" y="52" width="196" height="84" rx="12" fill="var(--card)" stroke="var(--c)" stroke-width="4"/><circle cx="96" cy="84" r="20" fill="var(--c)"/><circle cx="96" cy="79" r="7" fill="#fff"/><path d="M84 98q12-12 24 0" fill="#fff"/><rect x="130" y="70" width="100" height="8" rx="4" fill="var(--ink)"/><rect x="130" y="86" width="70" height="6" rx="3" fill="var(--soft)"/><rect x="72" y="110" width="176" height="18" rx="9" fill="#ffe08a"/><text x="160" y="123" font-size="11" text-anchor="middle" font-family="monospace" fill="#14213d">'+t+'</text>','login.microsoftonline.com')},
+phone:function(){var s='<rect x="110" y="8" width="100" height="146" rx="18" fill="var(--ink)"/><rect x="117" y="20" width="86" height="122" rx="10" fill="var(--card)"/><text x="160" y="40" font-size="9" text-anchor="middle" fill="var(--ink)">Approve sign in?</text><text x="160" y="78" font-size="34" font-weight="bold" text-anchor="middle" fill="var(--c)">67</text>'+bt(124,94,22,20,'12','var(--soft)')+bt(149,94,22,20,'67','#ff6b8b')+bt(174,94,22,20,'89','var(--soft)')+'<text x="156" y="134" font-size="22">👆</text><text x="36" y="84" font-size="44">💻</text><text x="236" y="84" font-size="44">🔐</text>';return base(s)},
+lock:function(){var s='';[50,78].forEach(function(y){s+='<rect x="56" y="'+y+'" width="208" height="20" rx="7" fill="var(--line)"/><text x="64" y="'+(y+15)+'" font-size="14" fill="var(--ink)">••••••••••</text><text x="240" y="'+(y+15)+'" font-size="12">👁</text>'});return frame(s+'<text x="58" y="134" font-size="30">🔒</text>'+bt(190,106,74,26,'Submit','var(--mint)')+ring(190,106,74,26),'mysignins.microsoft.com')},
+inst:function(){return frame(bt(60,50,200,22,'Library card ✖','var(--soft)')+bt(60,78,200,22,'Username ✖','var(--soft)')+bt(60,108,200,26,'Login via your institution')+ring(60,108,200,26),'citethemrightonline.com')},
+search:function(){return frame('<rect x="56" y="50" width="208" height="22" rx="11" fill="var(--line)"/><text x="70" y="65" font-size="11" fill="var(--ink)">🔎 Queen Margaret Univ|</text><rect x="56" y="84" width="208" height="26" rx="8" fill="#ffe08a"/><text x="70" y="101" font-size="12" font-weight="bold" fill="#14213d">🏫 Queen Margaret University</text>'+ring(56,84,208,26),'citethemrightonline.com')},
+cap:function(u){return frame('<text x="112" y="112" font-size="64">🎓</text><text x="60" y="70" font-size="22" font-weight="bold" fill="var(--c)">Welcome! 🎉</text>',u)}};
+var SC={canvas:[['mail'],['site','u.qmu.ac.uk','Password Retrieval page',1],['form'],['id','26012345@qmu.ac.uk'],['phone'],['lock'],['cap','canvas.qmu.ac.uk']],ctr:[['site','citethemrightonline.com','',0],['site','citethemrightonline.com','Log In',2],['inst'],['search'],['id','QMU email + password'],['site','citethemrightonline.com','Sign up now',1],['cap','citethemrightonline.com']]};
+function art(t,k){var a=SC[t][k];return '<div class="art">'+SCN[a[0]].apply(null,a.slice(1))+'</div>'}
+var CT=['Open Cite Them Right','افتح Cite Them Right','https://www.citethemrightonline.com'],AU=['https://apps.apple.com/app/microsoft-authenticator/id983156458','https://play.google.com/store/apps/details?id=com.azure.authenticator'];
+var LK={canvas:[[['Open Gmail','افتح Gmail','https://mail.google.com']],[['Open password page','افتح صفحة الباسورد','https://u.qmu.ac.uk']],[['Forgot password?','نسيت الباسورد؟','https://passwordreset.microsoftonline.com']],[['Open QMU email','افتح إيميل الجامعة','https://outlook.com/owa/qmu.ac.uk']],[['iPhone app','تطبيق آيفون',AU[0]],['Android app','تطبيق أندرويد',AU[1]]],[['Change password','غيّر الباسورد','https://mysignins.microsoft.com/security-info']],[['Open Canvas','افتح Canvas','https://canvas.qmu.ac.uk'],['Canvas app: iPhone','تطبيق آيفون','https://apps.apple.com/app/canvas-student/id480883488'],['Canvas app: Android','تطبيق أندرويد','https://play.google.com/store/apps/details?id=com.instructure.candroid']]],ctr:[[CT],[CT],[CT],[CT],[['Forgot password?','نسيت الباسورد؟','https://passwordreset.microsoftonline.com']],[CT],[CT]]};
+function links(t,k,L){return '<div class="links">'+LK[t][k].map(function(x){return '<a class="lnk" href="'+x[2]+'" target="_blank" rel="noopener noreferrer">🔗 '+x[L]+'</a>'}).join('')+'</div>'}
+var lang="en",tab="canvas",done={canvas:{},ctr:{}};
+function $(id){return document.getElementById(id)}
+function render(){
+ var L=lang==="ar"?1:0,S=T[lang],list=G[tab];
+ document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ $("title").textContent=S.title;$("sub").textContent=S.sub;
+ $("tab-canvas").textContent=S.canvas;$("tab-ctr").textContent=S.ctr;
+ $("tab-canvas").setAttribute("aria-selected",tab==="canvas");$("tab-ctr").setAttribute("aria-selected",tab==="ctr");
+ $("en").setAttribute("aria-pressed",lang==="en");$("ar").setAttribute("aria-pressed",lang==="ar");
+ $("foot").textContent=S.foot;
+ var h="",n=0;
+ list.forEach(function(s,k){var dn=done[tab][k];if(dn)n++;
+  h+='<section class="step'+(dn?" done":"")+'" style="--c:'+PAL[k%PAL.length]+'"><div class="num">'+(dn?"✓":k+1)+'</div><div class="body"><h2><span class="ico" aria-hidden="true">'+s.i+'</span>'+s.t[L]+'</h2><p>'+s.d[L]+'</p>'+(s.c?'<span class="chip">'+s.c+'</span>':'')+(s.tip?'<div class="tip">💡 '+s.tip[L]+'</div>':'')+art(tab,k)+links(tab,k,L)+'</div><button class="done-btn" data-k="'+k+'" aria-pressed="'+!!dn+'">'+(dn?S.undo:S.done)+'</button></section>';});
+ $("steps").innerHTML=h;
+ $("fill").style.width=(n/list.length*100)+"%";
+ $("count").textContent=n+" / "+list.length+" "+S.of;
+ $("party").textContent=S.party;$("party").className="party"+(n===list.length?" on":"");
+}
+$("steps").addEventListener("click",function(e){var b=e.target.closest(".done-btn");if(!b)return;var k=b.dataset.k;done[tab][k]=!done[tab][k];render();});
+$("en").onclick=function(){lang="en";render()};$("ar").onclick=function(){lang="ar";render()};
+$("tab-canvas").onclick=function(){tab="canvas";render()};$("tab-ctr").onclick=function(){tab="ctr";render()};
+render();
+</script>
+</body>
+</html>
